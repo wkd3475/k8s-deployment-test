@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-web-app-nodeport
+  labels:
+    app: node-web-app-nodeport
+spec:
+  selector:
+    matchLabels:
+      app: node-web-app-nodeport
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: node-web-app-nodeport
+    spec:
+      containers:
+        - name: node-web-app-nodeport
+          image: wkd3475/node-web-app
+          ports:
+          - containerPort: 3000
+      nodeSelector:
+        workertype: worker

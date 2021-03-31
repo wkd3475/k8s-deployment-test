@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: node-web-app-nodeport
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -19,5 +19,12 @@ spec:
           image: wkd3475/node-web-app
           ports:
           - containerPort: 3000
-      nodeSelector:
-        workertype: worker
+          resources:
+            limits:
+              memory: "300Mi"
+              cpu: "300m"
+            requests:
+              memory: "300Mi"
+              cpu: "300m"
+              # nodeSelector:
+              #      workertype: worker

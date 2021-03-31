@@ -1,11 +1,9 @@
 var express = require('express');
 var app = express();
-var os = require('os');
-
-var networkInterfaces = os.networkInterfaces();
+var ip = require('ip');
 
 app.get('/', function (req, res) {
-	res.send(networkInterfaces+'\n');
+	res.send(ip.address());
 });
 
 app.listen(3000, function () {
